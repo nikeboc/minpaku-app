@@ -2,10 +2,6 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
-   
-  def index
-    @users = User.where(activated: true).paginate(page: params[:page])          # Userを取り出して分割した値を@usersに代入
-  end
   
   def show
     @user = User.find(params[:id])                                              # paramsで:idパラメータを受け取る(/users/1にアクセスしたら1を受け取る)
@@ -45,6 +41,11 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     flash[:success] = "アカウントの削除が完了しました。"
     redirect_to users_url
+  end
+  
+  def edit_mypage
+    @user = User.find(params[:id])                                              # paramsで:idパラメータを受け取る(/users/1にアクセスしたら1を受け取る)
+    redirect_to root_url and return unless @user.activated?
   end
   
   private

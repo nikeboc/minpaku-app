@@ -1,4 +1,4 @@
-<% provide(:title, @user.name) %>
+<% provide(:title, "#{@user.name}さんのマイページ") %>
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
@@ -6,7 +6,13 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
-      
     </section>
+    <div class="mypage">
+    <!--<h2>名前:<%= @user.fullname %></h2>-->
+    <!--<h2>住所:<%= @user.address %></h2>-->
+    <!--<h2>電話番号:<%= @user.telnumber %></h2>-->
+    <!--<h2>メールアドレス:<%= @user.email %></h2>-->
+    <%= link_to "(マイページを更新する)", edit_mypage_path(@user) %>
+    </div>
   </aside>
 </div>

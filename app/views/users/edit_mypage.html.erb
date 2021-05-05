@@ -1,0 +1,20 @@
+<% provide(:title, "マイページ更新") %>
+<% provide(:button_text, "マイページ更新") %>
+<h1>マイページ更新</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(model: @user, local: true) do |f| %>
+    　<%= render 'shared/error_messages' %>
+      <%= f.label :fullname, "名前" %>
+      <%= f.text_field :fullname, class: 'form-control' %>
+
+      <%= f.label :address, "住所" %>
+      <%= f.text_field :address, class: 'form-control' %>
+
+      <%= f.label :telnumber, "電話番号" %>
+      <%= f.text_field :telnumber, class: 'form-control' %>
+      
+      <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
