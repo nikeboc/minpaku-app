@@ -1,5 +1,8 @@
 <div class="center jumbotron">
-  <h1>とまーるウェブ</h1>
-
+  <h1>とま〜るWEB</h1>
+  <% if logged_in? %>
+  <% else %>
+  <h2>ご利用にはアカウント作成が必要です</h2>
   <%= link_to "アカウント作成はこちら", signup_path, class: "btn btn-lg btn-primary" %>
+  <% end %>
 </div>
